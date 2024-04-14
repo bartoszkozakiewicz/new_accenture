@@ -1,0 +1,161 @@
+desc,schema,table_name,schema_name,neighbours,constraints,access
+"The table consists of five columns:
+- ProductID: an integer column that likely serves as a unique identifier for each product.
+- Name: a string column of variable width (nvarchar) that likely contains the name of each product.
+- ProductModel: a string column of variable width (nvarchar) that likely contains the model or type of each product.
+- Culture: a string column of fixed width (nchar) that likely contains a code or abbreviation for the culture or language associated with each product.
+- Description: a string column of variable width (nvarchar) that likely contains a description of each product.
+
+Based on the column names and types, it seems that this table might represent a list of products with associated information such as model, culture, and description. This table might be used in a product catalog or inventory management system to keep track of different products and their attributes.","[('ProductID', 'int'), ('Name', 'nvarchar'), ('ProductModel', 'nvarchar'), ('Culture', 'nchar'), ('Description', 'nvarchar')]",vProductAndDescription,SalesLT,[],[],1
+"The table consists of information related to different product models. Each row represents a unique product model and the columns provide various details about the product such as its name, summary, manufacturer, copyright, product URL, warranty period, warranty description, maintenance description, wheel type, saddle type, pedal type, bike frame type, crankset type, picture angle, picture size, product photo ID, material, color, product line, style, rider experience, row GUID, and modified date.
+
+This table might be used by a company that manufactures and sells bicycles to store information about their different product models. The table can be used to keep track of the various features and specifications of each model, as well as its warranty and maintenance details. The product photo ID column can be used to link to images of the product for marketing purposes. The table can also be used to analyze the popularity of different product lines and styles and to track changes made to the product models over time.","[('ProductModelID', 'int'), ('Name', 'nvarchar'), ('Summary', 'nvarchar'), ('Manufacturer', 'nvarchar'), ('Copyright', 'nvarchar'), ('ProductURL', 'nvarchar'), ('WarrantyPeriod', 'nvarchar'), ('WarrantyDescription', 'nvarchar'), ('NoOfYears', 'nvarchar'), ('MaintenanceDescription', 'nvarchar'), ('Wheel', 'nvarchar'), ('Saddle', 'nvarchar'), ('Pedal', 'nvarchar'), ('BikeFrame', 'nvarchar'), ('Crankset', 'nvarchar'), ('PictureAngle', 'nvarchar'), ('PictureSize', 'nvarchar'), ('ProductPhotoID', 'nvarchar'), ('Material', 'nvarchar'), ('Color', 'nvarchar'), ('ProductLine', 'nvarchar'), ('Style', 'nvarchar'), ('RiderExperience', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",vProductModelCatalogDescription,SalesLT,[],[],1
+"The table consists of three columns: ParentProductCategoryName, ProductCategoryName, and ProductCategoryID. 
+
+The ParentProductCategoryName column is of type nvarchar and represents the name of the parent product category. The ProductCategoryName column is also of type nvarchar and represents the name of the product category. The ProductCategoryID column is of type int and represents the unique identifier for each product category.
+
+This table might consist of a list of product categories for a company's e-commerce website or a retail store. The ParentProductCategoryName column could be used to group similar product categories together, such as electronics or clothing. The ProductCategoryName column could represent the specific product category, such as laptops or shirts. The ProductCategoryID column would be used as a unique identifier for each product category, making it easier to reference and sort the data.","[('ParentProductCategoryName', 'nvarchar'), ('ProductCategoryName', 'nvarchar'), ('ProductCategoryID', 'int')]",vGetAllCategories,SalesLT,[],[],1
+"The table consists of 17 columns with various data types. The columns are as follows:
+
+- ProductID: An integer representing the unique identifier of the product.
+- Name: A string representing the name of the product.
+- ProductNumber: A string representing the product number.
+- Color: A string representing the color of the product.
+- StandardCost: A monetary value representing the standard cost of the product.
+- ListPrice: A monetary value representing the list price of the product.
+- Size: A string representing the size of the product.
+- Weight: A decimal value representing the weight of the product.
+- ProductCategoryID: An integer representing the unique identifier of the product category.
+- ProductModelID: An integer representing the unique identifier of the product model.
+- SellStartDate: A datetime value representing the date when the product was first available for sale.
+- SellEndDate: A datetime value representing the date when the product was no longer available for sale.
+- DiscontinuedDate: A datetime value representing the date when the product was discontinued.
+- ThumbNailPhoto: A varbinary value representing the thumbnail photo of the product.
+- ThumbnailPhotoFileName: A string representing the filename of the thumbnail photo.
+- rowguid: A uniqueidentifier representing the unique identifier of the row.
+- ModifiedDate: A datetime value representing the date when the row was last modified.
+
+Based on the column names and types, this table might consist of product information for a company's inventory. It could be used to keep track of various product attributes such as name, number, color, cost, price, size, weight, and availability dates. The table might also be used to store product images and filenames. The unique identifiers and modified date could be used to track changes to the product information over time. The table could be used in a variety of industries such as retail, manufacturing, and e-commerce.","[('ProductID', 'int'), ('Name', 'nvarchar'), ('ProductNumber', 'nvarchar'), ('Color', 'nvarchar'), ('StandardCost', 'money'), ('ListPrice', 'money'), ('Size', 'nvarchar'), ('Weight', 'decimal'), ('ProductCategoryID', 'int'), ('ProductModelID', 'int'), ('SellStartDate', 'datetime'), ('SellEndDate', 'datetime'), ('DiscontinuedDate', 'datetime'), ('ThumbNailPhoto', 'varbinary'), ('ThumbnailPhotoFileName', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",Product,SalesLT,"[('ProductCategoryID',), ('ProductModelID',)]","[('FOREIGN KEY', 'FK_Product_ProductCategory_ProductCategoryID', 'ProductCategoryID'), ('FOREIGN KEY', 'FK_Product_ProductModel_ProductModelID', 'ProductModelID'), ('PRIMARY KEY', 'PK_Product_ProductID', 'ProductID'), ('UNIQUE', 'AK_Product_Name', 'Name'), ('UNIQUE', 'AK_Product_ProductNumber', 'ProductNumber'), ('UNIQUE', 'AK_Product_rowguid', 'rowguid')]",1
+"The table consists of five columns:
+- ProductCategoryID: an integer column that serves as the primary key for the table, uniquely identifying each record.
+- ParentProductCategoryID: an integer column that represents the ID of the parent product category, if applicable. This column can be used to create a hierarchy of product categories.
+- Name: a string column (nvarchar) that stores the name of the product category.
+- rowguid: a unique identifier column that can be used to ensure that each record in the table is globally unique.
+- ModifiedDate: a datetime column that stores the date and time the record was last modified.
+
+Based on the column names and types, this table might consist of a list of product categories for a company or online retailer. The ParentProductCategoryID column suggests that the categories can be organized into a hierarchy, while the rowguid column may be used for data synchronization across multiple systems. The ModifiedDate column could be used to track changes to the product categories over time. Overall, this table could be used to help organize and manage a company's product catalog.","[('ProductCategoryID', 'int'), ('ParentProductCategoryID', 'int'), ('Name', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",ProductCategory,SalesLT,"[('ParentProductCategoryID',)]","[('FOREIGN KEY', 'FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID', 'ParentProductCategoryID'), ('PRIMARY KEY', 'PK_ProductCategory_ProductCategoryID', 'ProductCategoryID'), ('UNIQUE', 'AK_ProductCategory_Name', 'Name'), ('UNIQUE', 'AK_ProductCategory_rowguid', 'rowguid')]",1
+"The table consists of nine columns with different data types. The columns are:
+
+1. SalesOrderID (int): This column stores the unique identifier for each sales order.
+2. SalesOrderDetailID (int): This column stores the unique identifier for each sales order detail.
+3. OrderQty (smallint): This column stores the quantity of the product ordered for each sales order detail.
+4. ProductID (int): This column stores the unique identifier for the product sold in each sales order detail.
+5. UnitPrice (money): This column stores the unit price of the product sold in each sales order detail.
+6. UnitPriceDiscount (money): This column stores the discount amount applied to the unit price of the product sold in each sales order detail.
+7. LineTotal (numeric): This column stores the total amount for each sales order detail, which is calculated by multiplying the order quantity, unit price, and discount.
+8. rowguid (uniqueidentifier): This column stores a unique identifier for each row in the table.
+9. ModifiedDate (datetime): This column stores the date and time when the row was last updated.
+
+Based on the column names and data types, the table might consist of data related to sales orders and their details. It could be used for tracking sales orders, products sold, and their associated quantities and prices. The table could be part of a larger database for a company's sales and inventory management system.","[('SalesOrderID', 'int'), ('SalesOrderDetailID', 'int'), ('OrderQty', 'smallint'), ('ProductID', 'int'), ('UnitPrice', 'money'), ('UnitPriceDiscount', 'money'), ('LineTotal', 'numeric'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",SalesOrderDetail,SalesLT,"[('ProductID',), ('SalesOrderID',)]","[('FOREIGN KEY', 'FK_SalesOrderDetail_Product_ProductID', 'ProductID'), ('FOREIGN KEY', 'FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID', 'SalesOrderID'), ('PRIMARY KEY', 'PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID', 'SalesOrderDetailID'), ('PRIMARY KEY', 'PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID', 'SalesOrderDetailID'), ('PRIMARY KEY', 'PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID', 'SalesOrderID'), ('PRIMARY KEY', 'PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID', 'SalesOrderID'), ('UNIQUE', 'AK_SalesOrderDetail_rowguid', 'rowguid')]",1
+"The table consists of nine columns:
+- AddressID: an integer that serves as the primary key for the table
+- AddressLine1: a string that represents the first line of the address
+- AddressLine2: a string that represents the second line of the address
+- City: a string that represents the city in which the address is located
+- StateProvince: a string that represents the state or province in which the address is located
+- CountryRegion: a string that represents the country in which the address is located
+- PostalCode: a string that represents the postal code of the address
+- rowguid: a unique identifier for the row
+- ModifiedDate: a datetime value that represents the date and time that the row was last modified
+
+This table might consist of addresses for customers, employees, or vendors. It could be used for shipping orders or for maintaining a database of contacts. The table could be joined with other tables in a database to provide additional information about the entities associated with each address. For example, it could be joined with a Customers table to provide the addresses of each customer, or with an Orders table to provide the shipping address for each order.","[('AddressID', 'int'), ('AddressLine1', 'nvarchar'), ('AddressLine2', 'nvarchar'), ('City', 'nvarchar'), ('StateProvince', 'nvarchar'), ('CountryRegion', 'nvarchar'), ('PostalCode', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",Address,SalesLT,[],"[('PRIMARY KEY', 'PK_Address_AddressID', 'AddressID'), ('UNIQUE', 'AK_Address_rowguid', 'rowguid')]",1
+"The table consists of 15 columns. 
+
+The first column 'CustomerID' is of type integer and likely serves as the primary key for the table, uniquely identifying each customer. 
+
+The second column 'NameStyle' is of type bit, which means it can only hold values of 0 or 1. This column may indicate whether the customer prefers to be addressed by a certain title or not. 
+
+The third column 'Title' is of type nvarchar and may hold the customer's formal title, such as Mr., Ms., Dr., etc. 
+
+The fourth column 'FirstName' is of type nvarchar and may hold the customer's first name. 
+
+The fifth column 'MiddleName' is of type nvarchar and may hold the customer's middle name or initial. 
+
+The sixth column 'LastName' is of type nvarchar and may hold the customer's last name. 
+
+The seventh column 'Suffix' is of type nvarchar and may hold any suffix that the customer may have, such as Jr., Sr., etc. 
+
+The eighth column 'CompanyName' is of type nvarchar and may hold the name of the company associated with the customer. 
+
+The ninth column 'SalesPerson' is of type nvarchar and may hold the name of the salesperson who manages the customer's account. 
+
+The tenth column 'EmailAddress' is of type nvarchar and may hold the customer's email address. 
+
+The eleventh column 'Phone' is of type nvarchar and may hold the customer's phone number. 
+
+The twelfth column 'PasswordHash' is of type varchar and may hold a hashed version of the customer's password for authentication purposes. 
+
+The thirteenth column 'PasswordSalt' is of type varchar and may hold a salt value used to hash the customer's password. 
+
+The fourteenth column 'rowguid' is of type uniqueidentifier and may hold a globally unique identifier (GUID) for the customer. 
+
+The fifteenth and final column 'ModifiedDate' is of type datetime and may hold the date and time when the customer record was last modified. 
+
+This table appears to be a customer table for a business. It may be used to store information about individual customers as well as their associated company and salesperson. The email address and phone number may be used for communication purposes, while the password hash and salt values may be used for security purposes. The rowguid may be used for synchronization purposes in a distributed database environment.","[('CustomerID', 'int'), ('NameStyle', 'bit'), ('Title', 'nvarchar'), ('FirstName', 'nvarchar'), ('MiddleName', 'nvarchar'), ('LastName', 'nvarchar'), ('Suffix', 'nvarchar'), ('CompanyName', 'nvarchar'), ('SalesPerson', 'nvarchar'), ('EmailAddress', 'nvarchar'), ('Phone', 'nvarchar'), ('PasswordHash', 'varchar'), ('PasswordSalt', 'varchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",Customer,SalesLT,[],"[('PRIMARY KEY', 'PK_Customer_CustomerID', 'CustomerID'), ('UNIQUE', 'AK_Customer_rowguid', 'rowguid')]",1
+"The table consists of five columns: CustomerID, AddressID, AddressType, rowguid, and ModifiedDate. CustomerID and AddressID are both integers, AddressType is a string data type (nvarchar), rowguid is a unique identifier, and ModifiedDate is a datetime data type.
+
+This table likely represents a customer's address book or a list of all addresses associated with a customer. The CustomerID column is likely a foreign key referencing a customer's unique identifier in another table. The AddressID column is likely a primary key for this table. AddressType could indicate the type of address (e.g. home, work, billing) and rowguid is likely used as a unique identifier for each row in the table. ModifiedDate could indicate the last time the address was updated.
+
+This table might be used by a company that needs to keep track of multiple addresses for each customer, such as an e-commerce site that needs to ship to different addresses or a financial institution that needs to keep track of a customer's billing and mailing addresses. The data in this table could be used for shipping and billing purposes, as well as for marketing and customer analysis.","[('CustomerID', 'int'), ('AddressID', 'int'), ('AddressType', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",CustomerAddress,SalesLT,"[('AddressID',), ('CustomerID',)]","[('FOREIGN KEY', 'FK_CustomerAddress_Address_AddressID', 'AddressID'), ('FOREIGN KEY', 'FK_CustomerAddress_Customer_CustomerID', 'CustomerID'), ('PRIMARY KEY', 'PK_CustomerAddress_CustomerID_AddressID', 'AddressID'), ('PRIMARY KEY', 'PK_CustomerAddress_CustomerID_AddressID', 'AddressID'), ('PRIMARY KEY', 'PK_CustomerAddress_CustomerID_AddressID', 'CustomerID'), ('PRIMARY KEY', 'PK_CustomerAddress_CustomerID_AddressID', 'CustomerID'), ('UNIQUE', 'AK_CustomerAddress_rowguid', 'rowguid')]",1
+"This table consists of information related to sales orders. 
+
+The columns in this table are as follows:
+
+- SalesOrderID: An integer value that serves as a unique identifier for each sales order.
+- RevisionNumber: A tinyint value that represents the revision number of the sales order.
+- OrderDate: A datetime value that represents the date the order was placed.
+- DueDate: A datetime value that represents the date the order is due.
+- ShipDate: A datetime value that represents the date the order was shipped.
+- Status: A tinyint value that represents the status of the order.
+- OnlineOrderFlag: A bit value that indicates whether the order was placed online.
+- SalesOrderNumber: A nvarchar value that serves as the sales order number.
+- PurchaseOrderNumber: A nvarchar value that represents the purchase order number.
+- AccountNumber: A nvarchar value that represents the account number associated with the order.
+- CustomerID: An integer value that represents the customer associated with the order.
+- ShipToAddressID: An integer value that represents the shipping address associated with the order.
+- BillToAddressID: An integer value that represents the billing address associated with the order.
+- ShipMethod: A nvarchar value that represents the shipping method for the order.
+- CreditCardApprovalCode: A varchar value that represents the approval code for any credit card used in the order.
+- SubTotal: A money value that represents the subtotal amount for the order.
+- TaxAmt: A money value that represents the tax amount for the order.
+- Freight: A money value that represents the freight amount for the order.
+- TotalDue: A money value that represents the total amount due for the order.
+- Comment: A nvarchar value that represents any comments associated with the order.
+- rowguid: A uniqueidentifier value that serves as a unique identifier for the row in the table.
+- ModifiedDate: A datetime value that represents the date the row was last modified.
+
+This table might be used by a company to store information about their sales orders. It could be used to track the status of orders, manage shipping and billing information, and calculate order totals. The table could be used in conjunction with other tables in a database to create reports on sales performance or to track customer behavior.","[('SalesOrderID', 'int'), ('RevisionNumber', 'tinyint'), ('OrderDate', 'datetime'), ('DueDate', 'datetime'), ('ShipDate', 'datetime'), ('Status', 'tinyint'), ('OnlineOrderFlag', 'bit'), ('SalesOrderNumber', 'nvarchar'), ('PurchaseOrderNumber', 'nvarchar'), ('AccountNumber', 'nvarchar'), ('CustomerID', 'int'), ('ShipToAddressID', 'int'), ('BillToAddressID', 'int'), ('ShipMethod', 'nvarchar'), ('CreditCardApprovalCode', 'varchar'), ('SubTotal', 'money'), ('TaxAmt', 'money'), ('Freight', 'money'), ('TotalDue', 'money'), ('Comment', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",SalesOrderHeader,SalesLT,"[('BillToAddressID',), ('ShipToAddressID',), ('CustomerID',)]","[('FOREIGN KEY', 'FK_SalesOrderHeader_Address_BillTo_AddressID', 'BillToAddressID'), ('FOREIGN KEY', 'FK_SalesOrderHeader_Customer_CustomerID', 'CustomerID'), ('FOREIGN KEY', 'FK_SalesOrderHeader_Address_ShipTo_AddressID', 'ShipToAddressID'), ('PRIMARY KEY', 'PK_SalesOrderHeader_SalesOrderID', 'SalesOrderID'), ('UNIQUE', 'AK_SalesOrderHeader_rowguid', 'rowguid'), ('UNIQUE', 'AK_SalesOrderHeader_SalesOrderNumber', 'SalesOrderNumber')]",1
+"This table consists of 5 columns:
+- ProductModelID: an integer representing the ID of a product model.
+- ProductDescriptionID: an integer representing the ID of a product description.
+- Culture: a Unicode character representing the culture or language associated with the product description.
+- rowguid: a unique identifier for each row in the table.
+- ModifiedDate: a datetime value representing the date and time the row was last modified.
+
+Based on these column names and types, it seems that this table might be used to store information about product models and their associated descriptions in multiple languages or cultures. The rowguid column indicates that each row is uniquely identifiable, which could be useful for tracking changes over time. The ModifiedDate column can also help with tracking changes and ensuring data accuracy. This table might be used in a larger database for an e-commerce website or inventory management system.","[('ProductModelID', 'int'), ('ProductDescriptionID', 'int'), ('Culture', 'nchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",ProductModelProductDescription,SalesLT,"[('ProductDescriptionID',), ('ProductModelID',)]","[('FOREIGN KEY', 'FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID', 'ProductDescriptionID'), ('FOREIGN KEY', 'FK_ProductModelProductDescription_ProductModel_ProductModelID', 'ProductModelID'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'Culture'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'Culture'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'Culture'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'ProductDescriptionID'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'ProductDescriptionID'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'ProductDescriptionID'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'ProductModelID'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'ProductModelID'), ('PRIMARY KEY', 'PK_ProductModelProductDescription_ProductModelID_ProductDescriptionID_Culture', 'ProductModelID'), ('UNIQUE', 'AK_ProductModelProductDescription_rowguid', 'rowguid')]",1
+"The table consists of four columns:
+1. ProductDescriptionID: an integer type column that serves as the primary key of the table.
+2. Description: a nvarchar type column that stores the description of a product.
+3. rowguid: a uniqueidentifier type column that is used to identify a particular row in the table.
+4. ModifiedDate: a datetime type column that stores the date and time when a row is modified.
+
+Based on the column names and types, this table might be used to store product descriptions for a catalog or inventory system. The ProductDescriptionID serves as a unique identifier for each product description, while the Description column stores the actual description of the product. The rowguid column might be used for replication purposes, where data from this table needs to be synchronized with other databases. Finally, the ModifiedDate column stores the date and time when a product description is modified, which can be useful for auditing or tracking changes to the product catalog.","[('ProductDescriptionID', 'int'), ('Description', 'nvarchar'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",ProductDescription,SalesLT,[],"[('PRIMARY KEY', 'PK_ProductDescription_ProductDescriptionID', 'ProductDescriptionID'), ('UNIQUE', 'AK_ProductDescription_rowguid', 'rowguid')]",1
+"This table consists of five columns. 
+
+1. ProductModelID - An integer column used to identify the product model.
+2. Name - A string column of Unicode characters used to store the name of the product model.
+3. CatalogDescription - An XML column used to store the description of the product catalog.
+4. rowguid - A unique identifier column used to identify the row.
+5. ModifiedDate - A datetime column used to track the last modification date of the row.
+
+Based on the column names and types, this table might be used to store information about various product models along with their descriptions. The XML column might be used to store detailed information about each product model such as its features, specifications, and pricing information. The unique identifier column might be used to ensure that each row is unique and the datetime column might be used to keep track of when the information was last updated.","[('ProductModelID', 'int'), ('Name', 'nvarchar'), ('CatalogDescription', 'xml'), ('rowguid', 'uniqueidentifier'), ('ModifiedDate', 'datetime')]",ProductModel,SalesLT,[],"[('PRIMARY KEY', 'PK_ProductModel_ProductModelID', 'ProductModelID'), ('UNIQUE', 'AK_ProductModel_Name', 'Name'), ('UNIQUE', 'AK_ProductModel_rowguid', 'rowguid')]",1
