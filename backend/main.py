@@ -36,9 +36,9 @@ def read_root():
 async def getMessage(message: ChatMessage):
     print("Otrzymałem wiadomość: ",message.message)
     print("Przed query: \n")
-    response = agent.get_answer("Information about products")
-    print("Odpowiedział query: ",response)
+    response = agent.get_answer(message.message)
+    print("Odpowiedział query: ",response.content)
     assert message.message is not None, "Message must be provided"
 
-    return {"response": "answer from llm"}
+    return {"response": response.content}
 

@@ -95,7 +95,7 @@ class Sqlagent():
                 query = refined_query
                 response = self.run_query(query)
                 iteration += 1
-                if iteration >= 5:
+                if iteration >= 2:
                     raise ValueError("Failed to generate a valid SQL query after 5 iterations.")
             return response
 
@@ -109,12 +109,13 @@ class Sqlagent():
             print("answer: ", answer)
             full_answer = self.full_chain().invoke({"question": user_question})
             print("full_answer: ", full_answer)
+            return full_answer
         except ValueError as e:
             print(f"Error: {str(e)}")
 
 
 if __name__ == "__main__":
-    user_question = 'Give information about bikes..'
+    user_question = 'Give information about products'
     agent = Sqlagent(collection_name="tests")
     try:
         answer = agent.schema_chain().invoke({"question": user_question})
