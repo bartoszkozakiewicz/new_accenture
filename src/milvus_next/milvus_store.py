@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 class MilvusStoreWithClient:
-    def __init__(self, client_uri: str = "http://localhost:19530", csv_file_path: str = "/Users/bartek/Documents/ai_persp/nowy/accenture-hackathon/backend/data/products.csv"):
+    def __init__(self, client_uri: str = "http://localhost:19530", csv_file_path: str = "/Users/bartek/Documents/ai_persp/abc/new_accenture/backend/data/products.csv"):
         self.client = MilvusClient(uri=client_uri)
         self.csv_loader = CSVLoader(csv_file_path)
         self.logger = logging.getLogger(__name__)
@@ -91,7 +91,7 @@ class MilvusStoreWithClient:
         collection_name: str,
         query: list = None,
         fixed_filter: str = 'access==0',
-        limit: int = 2,
+        limit: int = 1,
         output_fields: list = ['schema','neighbours','schema_name','table_name', 'constraints']):
 
         connections.connect(alias="default")
@@ -129,7 +129,7 @@ class MilvusStoreWithClient:
 if __name__ == "__main__":
     # creating collection
     COLLECTION_NAME = "tests"
-    milvus_store = MilvusStoreWithClient(csv_file_path="/Users/bartek/Documents/ai_persp/nowy/accenture-hackathon/backend/data/products.csv")
+    milvus_store = MilvusStoreWithClient(csv_file_path="/Users/bartek/Documents/ai_persp/abc/new_accenture/backend/data/products.csv")
 
     #HYBRYDA
     milvus_store.make_collection(COLLECTION_NAME)   

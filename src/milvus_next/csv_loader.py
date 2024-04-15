@@ -209,7 +209,7 @@ class CSVLoader:
 
 if __name__ == "__main__":
     print("Running the CSVLoader")
-    csv_loader = CSVLoader("/Users/bartek/Documents/ai_persp/nowy/accenture-hackathon/backend/data/products.csv")
+    csv_loader = CSVLoader("/Users/bartek/Documents/ai_persp/abc/new_accenture/backend/data/products.csv")
     prepared_data = csv_loader.prepare_data()
     # csv_loader.load_data()
     # csv_loader.vector_store_creation(collection_name="full_morele_pl")
